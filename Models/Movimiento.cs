@@ -11,9 +11,9 @@ namespace digitalArsv1.Models
         public decimal monto { get; set; }
 
         // Foreign Keys
-        public int nro_cuenta_orig { get; set; }
-        public int? nro_cuenta_dest { get; set; }
-        public int? codigo_transaccion { get; set; }
+        public int ?nro_cuenta_orig { get; set; }
+        public int ?nro_cuenta_dest { get; set; }
+        public int codigo_transaccion { get; set; }
 
        
         [ForeignKey("nro_cuenta_orig")]

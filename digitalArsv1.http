@@ -1,4 +1,4 @@
-@digitalArsv1_HostAddress = http://localhost:5045
+@digitalArsv1_HostAddress = http://localhost:7153
 
 GET {{digitalArsv1_HostAddress}}/weatherforecast/
 Accept: application/json

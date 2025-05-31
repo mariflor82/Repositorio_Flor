@@ -6,6 +6,11 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 using digitalArsv1;
 using digitalArsv1.Repositories;
+using Microsoft.Extensions.Configuration; //  esto si usas IConfiguration en controladores
+
+
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +22,7 @@ builder.Services.AddSwaggerGen(c =>
         Version = "v1",
         Description = "Gestión de usuarios, cuentas, movimientos, permisos " });
 
-    // Configuración de seguridad para JWT
+// Configuración de seguridad para JWT
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -65,17 +70,32 @@ builder.Services.AddScoped<IPermisoRepository, PermisoRepository>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
+        // 1) Leer valores del appsettings.json
+        var issuer = builder.Configuration["Jwt:Issuer"];
+        var audience = builder.Configuration["Jwt:Audience"];
+        var secret = builder.Configuration["Jwt:Key"]; 
+
+        // 2) Validar que NO SEA null o vacío
+        if (string.IsNullOrWhiteSpace(secret))
+            throw new InvalidOperationException("La configuración 'Jwt:Key' no está definida.");
+
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
             ValidateAudience = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = builder.Configuration["Jwt:Issuer"],
-            ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+
+            ValidIssuer = issuer,
+            ValidAudience = audience,
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(secret))   // ? Aquí 'secret' nunca será null
         };
     });
+
+// ? NUEVO: Registrar autorización para que UseAuthorization tenga soporte
+builder.Services.AddAuthorization();
+
 
 
 builder.Services.AddCors(options =>

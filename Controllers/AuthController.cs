@@ -33,7 +33,7 @@ namespace digitalArsv1.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO login)
         {
-            var usuario = await _usuarioRepository.ObtenerPorEmailAsync(login.mail);
+            var usuario = await _usuarioRepository.ObtenerPorEmailAsync(login.Mail);
             if (usuario == null || !PasswordHelper.VerifyPassword(login.Password, usuario.password_hash))
                 return Unauthorized(new { mensaje = "Credenciales inválidas." });
 

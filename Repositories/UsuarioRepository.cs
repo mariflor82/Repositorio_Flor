@@ -36,9 +36,11 @@ namespace digitalArsv1.Repositories
         {
             _context.Usuarios.Add(usuario);
             await _context.SaveChangesAsync();
-
-
+            
         }
-
+        public async Task<Usuario?> GetByMailWithCuentasAsync(string mail)
+           => await _context.Usuarios
+                        .Include(u => u.Cuentas)
+                        .FirstOrDefaultAsync(u => u.mail == mail);
     }
 }

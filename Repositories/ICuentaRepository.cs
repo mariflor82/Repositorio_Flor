@@ -10,5 +10,8 @@ namespace digitalArsv1.Repositories
         Task<IEnumerable<Cuenta>> GetAllWithUsuarioAsync();
         Task<Cuenta> GetByIdWithUsuarioAsync(int id);
         Task<decimal> ObtenerSaldoAsync(int nroCuenta);
+        Task<bool> ExisteCuenta(int nroCuenta);
+        Task CrearAsync(Cuenta cuenta);
+        Task<List<Cuenta>> GetByClienteAsync(int nro_cliente);
     }
 }

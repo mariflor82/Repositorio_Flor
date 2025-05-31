@@ -1,208 +1,325 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\",
+  "WorkspaceRootPath": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\user\\onedrive\\escritorio\\mispeliculas\\prueba-back-squad2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\asus\\desktop\\curso_sql_net_react\\tp\\etapa2\\billetera\\controllers\\movimientocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:controllers\\movimientocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\user\\onedrive\\escritorio\\mispeliculas\\prueba-back-squad2\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\asus\\desktop\\curso_sql_net_react\\tp\\etapa2\\billetera\\models\\movimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:models\\movimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\user\\onedrive\\escritorio\\mispeliculas\\prueba-back-squad2\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\asus\\desktop\\curso_sql_net_react\\tp\\etapa2\\billetera\\dtos\\movimientodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:dtos\\movimientodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\user\\onedrive\\escritorio\\mispeliculas\\prueba-back-squad2\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\asus\\desktop\\curso_sql_net_react\\tp\\etapa2\\billetera\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\user\\onedrive\\escritorio\\mispeliculas\\prueba-back-squad2\\helpers\\passwordhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:helpers\\passwordhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\asus\\desktop\\curso_sql_net_react\\tp\\etapa2\\billetera\\controllers\\transaccioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:controllers\\transaccioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\user\\onedrive\\escritorio\\mispeliculas\\prueba-back-squad2\\dtos\\dtoregisterrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\asus\\desktop\\curso_sql_net_react\\tp\\etapa2\\billetera\\models\\transaccion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:models\\transaccion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\asus\\desktop\\curso_sql_net_react\\tp\\etapa2\\billetera\\controllers\\cuentascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:controllers\\cuentascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\asus\\desktop\\curso_sql_net_react\\tp\\etapa2\\billetera\\repositories\\movimientorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:repositories\\movimientorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\asus\\desktop\\curso_sql_net_react\\tp\\etapa2\\billetera\\repositories\\imovimientorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:repositories\\imovimientorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\asus\\desktop\\curso_sql_net_react\\tp\\etapa2\\billetera\\dtos\\cuentadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:dtos\\cuentadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\asus\\desktop\\curso_sql_net_react\\tp\\etapa2\\billetera\\models\\cuenta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:models\\cuenta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\asus\\desktop\\curso_sql_net_react\\tp\\etapa2\\billetera\\repositories\\transaccionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:repositories\\transaccionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\asus\\desktop\\curso_sql_net_react\\tp\\etapa2\\billetera\\repositories\\itransaccionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:repositories\\itransaccionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\asus\\desktop\\curso_sql_net_react\\tp\\etapa2\\billetera\\dtos\\dtoregisterrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:dtos\\dtoregisterrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\user\\onedrive\\escritorio\\mispeliculas\\prueba-back-squad2\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\asus\\desktop\\curso_sql_net_react\\tp\\etapa2\\billetera\\repositories\\cuentarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:repositories\\cuentarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\asus\\desktop\\curso_sql_net_react\\tp\\etapa2\\billetera\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\user\\onedrive\\escritorio\\mispeliculas\\prueba-back-squad2\\migrations\\20250527201552_usu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:migrations\\20250527201552_usu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\asus\\desktop\\curso_sql_net_react\\tp\\etapa2\\billetera\\repositories\\icuentarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:repositories\\icuentarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\user\\onedrive\\escritorio\\mispeliculas\\prueba-back-squad2\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\user\\onedrive\\escritorio\\mispeliculas\\prueba-back-squad2\\repositories\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:repositories\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\user\\onedrive\\escritorio\\mispeliculas\\prueba-back-squad2\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|c:\\users\\asus\\desktop\\curso_sql_net_react\\tp\\etapa2\\billetera\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{7A168E59-F120-B897-6F83-5E3D9339F25E}|digitalArsv1.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 1,
+      "Orientation": 0,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 379,
-          "SelectedChildIndex": 0,
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAcwFUAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T12:16:50.783Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "20250527201552_usu.cs",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\Migrations\\20250527201552_usu.cs",
-              "RelativeDocumentMoniker": "Migrations\\20250527201552_usu.cs",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\Migrations\\20250527201552_usu.cs",
-              "RelativeToolTip": "Migrations\\20250527201552_usu.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T20:56:01.428Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\Models\\Usuario.cs",
-              "RelativeDocumentMoniker": "Models\\Usuario.cs",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\Models\\Usuario.cs",
-              "RelativeToolTip": "Models\\Usuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T18:38:01.189Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DTORegisterRequest.cs",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\DTOs\\DTORegisterRequest.cs",
-              "RelativeDocumentMoniker": "DTOs\\DTORegisterRequest.cs",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\DTOs\\DTORegisterRequest.cs",
-              "RelativeToolTip": "DTOs\\DTORegisterRequest.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAAAB0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T18:30:31.661Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "UsuariosController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\Controllers\\UsuariosController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Controllers\\UsuariosController.cs",
               "RelativeDocumentMoniker": "Controllers\\UsuariosController.cs",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\Controllers\\UsuariosController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Controllers\\UsuariosController.cs",
               "RelativeToolTip": "Controllers\\UsuariosController.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAqwDMAAAACAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwCkAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T18:28:16.42Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IUsuarioRepository.cs",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\Repositories\\IUsuarioRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\IUsuarioRepository.cs",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\Repositories\\IUsuarioRepository.cs",
-              "RelativeToolTip": "Repositories\\IUsuarioRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T18:02:42.467Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UsuarioRepository.cs",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\Repositories\\UsuarioRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\UsuarioRepository.cs",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\Repositories\\UsuarioRepository.cs",
-              "RelativeToolTip": "Repositories\\UsuarioRepository.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAAACsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T18:02:06.554Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-27T17:58:10.998Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "Controllers\\AuthController.cs",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAAAIMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T17:57:24.732Z",
+              "WhenOpened": "2025-05-31T22:19:02.79Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "PasswordHelper.cs",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\Helpers\\PasswordHelper.cs",
-              "RelativeDocumentMoniker": "Helpers\\PasswordHelper.cs",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\Helpers\\PasswordHelper.cs",
-              "RelativeToolTip": "Helpers\\PasswordHelper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "TransaccionController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Controllers\\TransaccionController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TransaccionController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Controllers\\TransaccionController.cs",
+              "RelativeToolTip": "Controllers\\TransaccionController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T17:52:58.771Z",
+              "WhenOpened": "2025-05-31T21:39:33.404Z",
               "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedHeight": 21,
-          "SelectedChildIndex": 1,
-          "Children": [
+            },
             {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Transaccion.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Models\\Transaccion.cs",
+              "RelativeDocumentMoniker": "Models\\Transaccion.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Models\\Transaccion.cs",
+              "RelativeToolTip": "Models\\Transaccion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T15:53:49.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MovimientoController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Controllers\\MovimientoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MovimientoController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Controllers\\MovimientoController.cs",
+              "RelativeToolTip": "Controllers\\MovimientoController.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAmwF8AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T14:13:10.24Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": ".gitignore",
-              "DocumentMoniker": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\.gitignore",
-              "RelativeDocumentMoniker": ".gitignore",
-              "ToolTip": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\.gitignore",
-              "RelativeToolTip": ".gitignore",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA==",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF8SURBVDhPjVNLTgJBEG1lwpoFB3GNK9fieA48hD8iwT/ihwgSDAIHgAGXXsEV18CNzL/LquqZdsYM6kteXqcy3fWqpmpNRBgOhyABBEgpAFVKPIMUcYzUyOU\u002BXM/b2qtU3vkSfRjjZTCAMAw1A2LwzdFoBPP5HNqdzuL27n4juibWI\u002BUshBA1DIkhEx9iEorFotgslQqGYbxxAGFEqt1MxmPWJLbLZdZ\u002Bv89q5PMFPiTR6z2zdaxR0fXA0XTBcVywkb4fwHXjRteecIDNQ7UmExVYAdPcxYaqclN46na5WenMKjtlVnTYwcXlVYaDqImW9beD5N/TeGy32QHXm6hZ03ZgiSQHp2fnWQ4oBmJqWSqwAqZpZjt4aLXAD4J0VqyZsmoubfB8H2r1eoaD6NXZ9HcHO\u002BSA3f4AjifXl8rItOETM8ckB9WTWpYD9RdeZ1PWVWAHWXPQaDb59f/w8LiqHeh1pvGkCaP6qB8yXusoxmuNZ7XmII4O9vGuEF86osuDYRkpYQAAAABJRU5ErkJggg==",
-              "WhenOpened": "2025-05-29T12:08:06.216Z",
+              "Title": "Movimiento.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Models\\Movimiento.cs",
+              "RelativeDocumentMoniker": "Models\\Movimiento.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Models\\Movimiento.cs",
+              "RelativeToolTip": "Models\\Movimiento.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA5wBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T14:53:02.718Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MovimientoDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\DTOs\\MovimientoDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\MovimientoDTO.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\DTOs\\MovimientoDTO.cs",
+              "RelativeToolTip": "DTOs\\MovimientoDTO.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T14:04:02.636Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MovimientoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Repositories\\MovimientoRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\MovimientoRepository.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Repositories\\MovimientoRepository.cs",
+              "RelativeToolTip": "Repositories\\MovimientoRepository.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAADwvzsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T14:11:39.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CuentasController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Controllers\\CuentasController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CuentasController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Controllers\\CuentasController.cs",
+              "RelativeToolTip": "Controllers\\CuentasController.cs",
+              "ViewState": "AgIAAP8AAAAAAAAAAADwvxABAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T23:24:20.203Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IMovimientoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Repositories\\IMovimientoRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\IMovimientoRepository.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Repositories\\IMovimientoRepository.cs",
+              "RelativeToolTip": "Repositories\\IMovimientoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T13:49:41.988Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CuentaDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\DTOs\\CuentaDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\CuentaDTO.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\DTOs\\CuentaDTO.cs",
+              "RelativeToolTip": "DTOs\\CuentaDTO.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAkwFEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T12:48:18.189Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Cuenta.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Models\\Cuenta.cs",
+              "RelativeDocumentMoniker": "Models\\Cuenta.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Models\\Cuenta.cs",
+              "RelativeToolTip": "Models\\Cuenta.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwA8AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T00:41:21.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "TransaccionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Repositories\\TransaccionRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\TransaccionRepository.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Repositories\\TransaccionRepository.cs",
+              "RelativeToolTip": "Repositories\\TransaccionRepository.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAwwCgAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T14:38:40.547Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ITransaccionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Repositories\\ITransaccionRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\ITransaccionRepository.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Repositories\\ITransaccionRepository.cs",
+              "RelativeToolTip": "Repositories\\ITransaccionRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T14:37:13.487Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "DTORegisterRequest.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\DTOs\\DTORegisterRequest.cs",
+              "RelativeDocumentMoniker": "DTOs\\DTORegisterRequest.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\DTOs\\DTORegisterRequest.cs",
+              "RelativeToolTip": "DTOs\\DTORegisterRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T14:03:49.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CuentaRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Repositories\\CuentaRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\CuentaRepository.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Repositories\\CuentaRepository.cs",
+              "RelativeToolTip": "Repositories\\CuentaRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T23:23:07.111Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAUwCMAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T00:47:27.967Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ICuentaRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Repositories\\ICuentaRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\ICuentaRepository.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\Repositories\\ICuentaRepository.cs",
+              "RelativeToolTip": "Repositories\\ICuentaRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T23:23:47.8Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-31T10:25:58.136Z",
               "EditorCaption": ""
             }
           ]

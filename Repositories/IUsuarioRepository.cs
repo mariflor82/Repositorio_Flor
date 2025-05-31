@@ -10,6 +10,6 @@ namespace digitalArsv1.Repositories
         Task DesactivarUsuariosAsync(List<Usuario> usuarios);
         Task<Usuario> ObtenerPorEmailAsync(string email);
         Task CrearAsync(Usuario usuario);
-       
+        Task<Usuario?> GetByMailWithCuentasAsync(string mail); // ← para ver cuentas de usuario
     }
 }

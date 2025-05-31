@@ -6,12 +6,15 @@ namespace digitalArsv1.Models
     public class Cuenta
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)] // ✅ Evita que SQL genere este campo automáticamente
         public int nro_cuenta { get; set; }
         public string producto { get; set; } = string.Empty;
         public string CBU { get; set; } = string.Empty;
         public bool estado { get; set; }
         public int nro_cliente { get; set; }
         public string? rol_cta { get; set; }
+        public decimal? saldo { get; set; }
+        public DateOnly fecha_alta { get; set; }
 
         // Relación con Usuario (nro_cliente)
         [ForeignKey("nro_cliente")]

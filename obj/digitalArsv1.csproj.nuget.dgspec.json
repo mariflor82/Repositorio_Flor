@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\digitalArsv1.csproj": {}
+    "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\digitalArsv1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\digitalArsv1.csproj": {
+    "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\digitalArsv1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\digitalArsv1.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\digitalArsv1.csproj",
         "projectName": "digitalArsv1",
-        "projectPath": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\digitalArsv1.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\OneDrive\\Escritorio\\MisPeliculas\\prueba-Back-squad2\\obj\\",
+        "projectPath": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\digitalArsv1.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ASUS\\Desktop\\Curso_SQL_NET_REACT\\TP\\etapa2\\billetera\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

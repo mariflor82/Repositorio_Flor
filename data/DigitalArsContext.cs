@@ -37,7 +37,9 @@ namespace digitalArsv1
             {
                 entity.ToTable("Cuenta");
                 entity.HasKey(c => c.nro_cuenta);
-                entity.Property(c => c.nro_cuenta).HasColumnName("nro_cuenta");
+                entity.Property(c => c.nro_cuenta)
+                      .HasColumnName("nro_cuenta")
+                      .ValueGeneratedNever(); // ✅ Evita que SQL genere este campo automáticamente
                 entity.Property(c => c.producto).HasColumnName("producto");
                 entity.Property(c => c.CBU).HasColumnName("CBU");
                 entity.Property(c => c.estado).HasColumnName("estado");

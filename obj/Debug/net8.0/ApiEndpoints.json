@@ -51,7 +51,7 @@
     ]
   },
   {
-    "ContainingType": "CuentasController",
+    "ContainingType": "digitalArsv1.Controllers.CuentasController",
     "Method": "GetCuentas",
     "RelativePath": "api/Cuentas",
     "HttpMethod": "GET",
@@ -71,7 +71,27 @@
     ]
   },
   {
-    "ContainingType": "CuentasController",
+    "ContainingType": "digitalArsv1.Controllers.CuentasController",
+    "Method": "CrearCuenta",
+    "RelativePath": "api/Cuentas",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "digitalArsv1.DTOs.CuentaConsultaDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "digitalArsv1.Controllers.CuentasController",
     "Method": "GetCuenta",
     "RelativePath": "api/Cuentas/{id}",
     "HttpMethod": "GET",
@@ -97,7 +117,7 @@
     ]
   },
   {
-    "ContainingType": "CuentasController",
+    "ContainingType": "digitalArsv1.Controllers.CuentasController",
     "Method": "ObtenerSaldo",
     "RelativePath": "api/Cuentas/{nroCuenta}/saldo",
     "HttpMethod": "GET",
@@ -123,16 +143,32 @@
     ]
   },
   {
-    "ContainingType": "MovimientosController",
-    "Method": "GetMovimientos",
-    "RelativePath": "api/Movimientos",
+    "ContainingType": "digitalArsv1.Controllers.CuentasController",
+    "Method": "ProcesarMovimiento",
+    "RelativePath": "api/Cuentas/movimiento",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "digitalArsv1.DTOs.MovimientoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "digitalArsv1.Controllers.CuentasController",
+    "Method": "GetCuentasPorCliente",
+    "RelativePath": "api/Cuentas/por-cliente",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[digitalArsv1.Models.Movimiento, digitalArsv1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[digitalArsv1.DTOs.CuentaResumenDTO, digitalArsv1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -144,21 +180,15 @@
   },
   {
     "ContainingType": "MovimientosController",
-    "Method": "PostMovimiento",
+    "Method": "GetMovimientos",
     "RelativePath": "api/Movimientos",
-    "HttpMethod": "POST",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "digitalArsv1.DTOs.MovimientoDTO",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "digitalArsv1.Models.Movimiento",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[digitalArsv1.Models.Movimiento, digitalArsv1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -226,6 +256,22 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MovimientosController",
+    "Method": "ProcesarMovimiento",
+    "RelativePath": "api/Movimientos/registrar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "movimientoDto",
+        "Type": "digitalArsv1.DTOs.MovimientoDTO",
         "IsRequired": true
       }
     ],
@@ -366,14 +412,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "usuario",
-        "Type": "Usuario",
+        "Name": "dto",
+        "Type": "digitalArsv1.DTOs.RegisterRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "Usuario",
+        "Type": "digitalArsv1.DTOs.UsuarioDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -400,6 +446,32 @@
     "ReturnTypes": [
       {
         "Type": "digitalArsv1.DTOs.UsuarioDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "UsuariosController",
+    "Method": "Login",
+    "RelativePath": "api/Usuarios/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "digitalArsv1.DTOs.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
         "MediaTypes": [
           "text/plain",
           "application/json",
