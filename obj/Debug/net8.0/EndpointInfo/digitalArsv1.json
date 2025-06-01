@@ -436,7 +436,7 @@
         }
       }
     },
-    "/api/Movimientos/registrar": {
+    "/api/Movimientos/movimiento": {
       "post": {
         "tags": [
           "Movimientos"
@@ -456,6 +456,68 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/MovimientoDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Movimientos/transferir": {
+      "post": {
+        "tags": [
+          "Movimientos"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransferenciaDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransferenciaDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransferenciaDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Movimientos/depositar": {
+      "post": {
+        "tags": [
+          "Movimientos"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DepositoDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DepositoDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DepositoDTO"
               }
             }
           }
@@ -919,6 +981,24 @@
         },
         "additionalProperties": false
       },
+      "DepositoDTO": {
+        "type": "object",
+        "properties": {
+          "nroCuentaDestino": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "monto": {
+            "type": "number",
+            "format": "double"
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "LoginDTO": {
         "type": "object",
         "properties": {
@@ -1065,6 +1145,24 @@
               "$ref": "#/components/schemas/Movimiento"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TransferenciaDTO": {
+        "type": "object",
+        "properties": {
+          "nroCuentaOrigen": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nroCuentaDestino": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "monto": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false

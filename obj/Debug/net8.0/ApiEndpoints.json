@@ -263,15 +263,47 @@
   },
   {
     "ContainingType": "MovimientosController",
-    "Method": "ProcesarMovimiento",
-    "RelativePath": "api/Movimientos/registrar",
+    "Method": "Depositar",
+    "RelativePath": "api/Movimientos/depositar",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "movimientoDto",
+        "Name": "dto",
+        "Type": "digitalArsv1.DTOs.DepositoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MovimientosController",
+    "Method": "ProcesarMovimiento",
+    "RelativePath": "api/Movimientos/movimiento",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
         "Type": "digitalArsv1.DTOs.MovimientoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MovimientosController",
+    "Method": "Transferir",
+    "RelativePath": "api/Movimientos/transferir",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "digitalArsv1.DTOs.TransferenciaDTO",
         "IsRequired": true
       }
     ],

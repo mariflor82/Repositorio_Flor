@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("digitalArsv1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4b97e8570ee818e0ec2fa4be0af9ff9d1b00fcd8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72ec47bfa80fb15cc10eecf49723814f4a468e3c")]
 [assembly: System.Reflection.AssemblyProductAttribute("digitalArsv1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("digitalArsv1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

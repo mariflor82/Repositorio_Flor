@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -20,9 +20,9 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "BILLETERA VIRTUAL- DigitalArs",
         Version = "v1",
-        Description = "Gesti�n de usuarios, cuentas, movimientos, permisos " });
+        Description = "Gestión de usuarios, cuentas, movimientos, permisos " });
 
-// Configuraci�n de seguridad para JWT
+// Configuración de seguridad para JWT
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -54,7 +54,7 @@ builder.Services.AddDbContext<DigitalArsContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DigitalArsConnection")));
 
-// Configura la serializaci�n JSON
+// Configura la serialización JSON
 builder.Services.AddControllers()
     .AddJsonOptions(x =>
         x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
@@ -66,7 +66,27 @@ builder.Services.AddScoped<IMovimientoRepository, MovimientoRepository>();
 builder.Services.AddScoped<ITransaccionRepository, TransaccionRepository>();
 builder.Services.AddScoped<IPermisoRepository, PermisoRepository>();
 
-// **Configuraci�n de Autenticaci�n JWT:**
+//Permitir CORS desde Swagger (https://localhost:7153) **
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSwagger", policy =>
+    {
+        policy
+            .AllowAnyOrigin()    // Permitir *cualquier* origen
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
+
+
+
+
+
+
+
+
+// **Configuración de Autenticación JWT:**
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -75,9 +95,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         var audience = builder.Configuration["Jwt:Audience"];
         var secret = builder.Configuration["Jwt:Key"]; 
 
-        // 2) Validar que NO SEA null o vac�o
+        // 2) Validar que NO SEA null o vacío
         if (string.IsNullOrWhiteSpace(secret))
-            throw new InvalidOperationException("La configuraci�n 'Jwt:Key' no est� definida.");
+            throw new InvalidOperationException("La configuración 'Jwt:Key' no está definida.");
 
         options.TokenValidationParameters = new TokenValidationParameters
         {
@@ -89,25 +109,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidIssuer = issuer,
             ValidAudience = audience,
             IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(secret))   // ? Aqu� 'secret' nunca ser� null
+                Encoding.UTF8.GetBytes(secret))   // ? Aquí 'secret' nunca será null
         };
     });
-
-// ? NUEVO: Registrar autorizaci�n para que UseAuthorization tenga soporte
-builder.Services.AddAuthorization();
-
-
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowFrontend",
-        policy =>
-        {
-            policy.WithOrigins("http://localhost:5174") // Vite frontend
-                  .AllowAnyHeader()
-                  .AllowAnyMethod();
-        });
-});
 var app = builder.Build();
 
 // Middleware pipeline
@@ -119,7 +123,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors("AllowFrontend");
+
+// **───────────────────────────────────────────────────────────────**
+// ** CAMBIO: Usar la política CORS “AllowSwagger” antes de UseAuthentication **
+app.UseCors("AllowSwagger");
+// **───────────────────────────────────────────────────────────────**
+
 app.UseAuthentication();  // <- Esto debe ir antes que UseAuthorization
 app.UseAuthorization();
 
