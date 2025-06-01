@@ -377,240 +377,77 @@ public class MovimientosController : ControllerBase
         });
     }
 
-
-
-
-
-
+    // ==== MÉTODO PARA DEPOSITO EN CUENTA
+    // =============================================
     // POST /api/Movimientos/depositar
     [Authorize(Roles = "Billetera")]
     [HttpPost("depositar")]
     public async Task<ActionResult> Depositar([FromBody] DepositoDTO dto)
-    
-        {
-            // 1) Validar que el DTO no sea null
-            if (dto == null)
-                return BadRequest("El cuerpo de la petición no puede estar vacío.");
-
-            // 2) Validar que llegue la descripción y el monto
-            if (string.IsNullOrWhiteSpace(dto.Descripcion))
-                return BadRequest("La descripción es obligatoria.");
-            if (dto.Monto <= 0)
-                return BadRequest("El monto debe ser mayor que cero.");
-
-            // 3) Extraer nro_cliente desde el JWT (para determinar quién hace el depósito)
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)
-                         ?? User.FindFirstValue("sub");
-            if (!int.TryParse(userId, out var nroCliente))
-                return Forbid("Token inválido.");  // 🔴 Ya no validamos cuentaDestino aquí
-
-            // 4) Verificar que la cuenta destino exista y pertenezca al cliente autenticado
-            var cuentaDestino = await _cuentaRepository.GetByIdWithUsuarioAsync(dto.NroCuentaDestino);
-            if (cuentaDestino == null)
-                return NotFound($"La cuenta destino {dto.NroCuentaDestino} no existe.");
-            if (cuentaDestino.nro_cliente != nroCliente)
-                return Forbid("No tienes permiso sobre la cuenta destino.");
-
-            // 5) OBTENER O CREAR la Transacción "Depósito cuenta propia" (código = 3)
-            const int CODIGO_DEPOSITO = 3;
-            var transac = await _transaccionRepository.GetByIdAsync(CODIGO_DEPOSITO);
-            if (transac != null)
-            {
-                // ✅ SI EXISTE, actualizamos la descripción (puede cambiarse si el front envía un texto distinto)
-                transac.descripcion = dto.Descripcion;
-                await _transaccionRepository.SaveAsync();
-            }
-            else
-            {
-                // ✅ SI NO EXISTE, lo creamos con código = 3
-                var nuevaTransac = new Transaccion
-                {
-                    codigo_transaccion = CODIGO_DEPOSITO,
-                    descripcion = dto.Descripcion
-                };
-                await _transaccionRepository.CrearAsync(nuevaTransac);
-                await _transaccionRepository.SaveAsync();
-            }
-
-            // 6) Generar el siguiente id_trx (máximo + 1)
-            var maxId = await _movimientoRepository.GetMaxIdAsync();
-            var nuevoId = maxId + 1;
-
-            // 7) Crear el objeto Movimiento solo para la cuenta destino
-            var mov = new Movimiento
-            {
-                id_trx = nuevoId,
-                codigo_transaccion = CODIGO_DEPOSITO,
-                nro_cuenta_orig = null,                     // 🔴 Para depósito, origen = null
-                nro_cuenta_dest = dto.NroCuentaDestino,     // ✅ Solo destino
-                monto = dto.Monto,
-                fecha = DateTime.UtcNow
-            };
-
-            // 8) Acreditar directamente el monto en la cuenta destino
-            cuentaDestino.saldo += dto.Monto;
-            //     (No hace falta restar nada en origen, porque es un depósito externo)
-
-            // 9) Guardar el movimiento
-            await _movimientoRepository.CrearAsync(mov);
-            await _movimientoRepository.SaveAsync();
-
-            return Ok(new { id = mov.id_trx, mensaje = "Depósito registrado correctamente." });
-        }
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-/*
-[HttpPost("registrar")] // RegistrarMovimiento: lógica completa según tipo de transacción
-[Authorize(Roles = "Billetera")]
-
-public async Task<ActionResult> ProcesarMovimiento([FromBody] MovimientoDTO movimientoDto)
-{
-    // 1️⃣ Validar que la descripción venga presente
-    if (string.IsNullOrWhiteSpace(movimientoDto.Descripcion))
-        return BadRequest("La descripción de la transacción es obligatoria.");
-
-    // 2️⃣ Asignar el código de transacción según la descripción
-    int codigoTransaccion;
-    switch (movimientoDto.Descripcion)
     {
-        case "Crédito por transferencia":
-            codigoTransaccion = 1;
-            break;
-        case "Transferencia a otra cuenta":
-            codigoTransaccion = 2;
-            break;
-        case "Depósito cuenta propia":
-            codigoTransaccion = 3;
-            break;
-        case "Compra en comercio":
-            codigoTransaccion = 4;
-            break;
-        case "Recarga de saldo virtual":
-            codigoTransaccion = 5;
-            break;
-        default:
-            return BadRequest("Descripción de transacción no reconocida.");
-    }
+        // 1) Validar que el DTO no sea null
+        if (dto == null)
+            return BadRequest("El cuerpo de la petición no puede estar vacío.");
 
-    // 3️⃣ Validar que el monto sea positivo
-    if (movimientoDto.Monto <= 0)
-        return BadRequest("El monto debe ser mayor a cero.");
+        // 2) Validar que llegue el monto (ya no validamos Descripción aquí)
+        if (dto.Monto <= 0)
+            return BadRequest("El monto debe ser mayor que cero.");
 
-    // 4️⃣ Extraer nro_cliente del JWT
-    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)
-                 ?? User.FindFirstValue("sub");
-    if (!int.TryParse(userId, out var clienteAutenticado))
-        return Forbid(); // usuario autenticado, pero no encontramos el claim; cortamos
+        // 3) Extraer nro_cliente desde el JWT (para determinar quién hace el depósito)
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)
+                     ?? User.FindFirstValue("sub");
+        if (!int.TryParse(userId, out var nroCliente))
+            return Forbid("Token inválido.");  // 🔴 Ya no validamos cuentaDestino aquí
 
-    // 5️⃣ Verificar reglas de origen/destino según código
-    if (codigoTransaccion == 3) // Depósito
-    {
-        if (movimientoDto.NroCuentaOrigen != 0 || !movimientoDto.NroCuentaDestino.HasValue)
-            return BadRequest("Depósito requiere Origen = 0 y Destino válido.");
-    }
-    else if (codigoTransaccion == 2 || codigoTransaccion == 1) // Transferencias/Crédito
-    {
-        if (movimientoDto.NroCuentaOrigen <= 0 || !movimientoDto.NroCuentaDestino.HasValue)
-            return BadRequest("Transferencia o crédito requiere Origen != 0 y Destino válido.");
-    }
-    else if (codigoTransaccion == 4 || codigoTransaccion == 5) // Compra o Recarga
-    {
-        if (movimientoDto.NroCuentaOrigen <= 0 || movimientoDto.NroCuentaDestino != null)
-            return BadRequest("Compra/Recarga requiere Origen != 0 y Destino = null.");
-    }
-
-    // 6️⃣ Obtener y validar cuentas de origen/destino
-    Cuenta cuentaOrigen = null!;
-    if (movimientoDto.NroCuentaOrigen != 0)
-    {
-        cuentaOrigen = await _cuentaRepository.GetByIdWithUsuarioAsync(movimientoDto.NroCuentaOrigen);
-        if (cuentaOrigen == null || cuentaOrigen.nro_cliente != clienteAutenticado)
-            return Forbid("No tiene permiso sobre la cuenta de origen.");
-
-        // Verificar saldo para retiros, transferencias, compras y recargas
-        var saldoOrigen = await _cuentaRepository.ObtenerSaldoAsync(movimientoDto.NroCuentaOrigen);
-        if ((codigoTransaccion == 1 || codigoTransaccion == 2 || codigoTransaccion == 4 || codigoTransaccion == 5)
-            && movimientoDto.Monto > saldoOrigen)
-        {
-            return BadRequest("Saldo insuficiente en cuenta de origen.");
-        }
-    }
-
-    Cuenta cuentaDestino = null!;
-    if (movimientoDto.NroCuentaDestino.HasValue)
-    {
-        cuentaDestino = await _cuentaRepository.GetByIdWithUsuarioAsync(movimientoDto.NroCuentaDestino.Value);
+        // 4) Verificar que la cuenta destino exista y pertenezca al cliente autenticado
+        var cuentaDestino = await _cuentaRepository.GetByIdWithUsuarioAsync(dto.NroCuentaDestino);
         if (cuentaDestino == null)
-            return NotFound($"Cuenta destino {movimientoDto.NroCuentaDestino.Value} no existe.");
+            return NotFound($"La cuenta destino {dto.NroCuentaDestino} no existe.");
+        if (cuentaDestino.nro_cliente != nroCliente)
+            return Forbid("No tienes permiso sobre la cuenta destino.");
 
-        // Verificar que para crédito y depósito la cuenta destino pertenezca al cliente autenticado
-        if ((codigoTransaccion == 1 || codigoTransaccion == 2 || codigoTransaccion == 3)
-            && cuentaDestino.nro_cliente != clienteAutenticado)
+        // 5) OBTENER O CREAR la Transacción "Depósito cuenta propia" (código = 3)
+        const int CODIGO_DEPOSITO = 3;
+        var transac = await _transaccionRepository.GetByIdAsync(CODIGO_DEPOSITO);
+        if (transac == null)
         {
-            return Forbid("La cuenta de destino no pertenece al cliente autenticado.");
+            // ✅ SI NO EXISTE, lo creamos con código = 3 y descripción fija
+            var nuevaTransac = new Transaccion
+            {
+                codigo_transaccion = CODIGO_DEPOSITO,
+                descripcion = "Depósito cuenta propia"  // ✅ descripción implícita
+            };
+            await _transaccionRepository.CrearAsync(nuevaTransac);
+            await _transaccionRepository.SaveAsync();
         }
+        // 🔴 Si ya existe, no necesitamos actualizar descripción—queda implícita.
+
+        // 6) Generar el siguiente id_trx (máximo + 1)
+        var maxId = await _movimientoRepository.GetMaxIdAsync();
+        var nuevoId = maxId + 1;
+
+        // 7) Crear el objeto Movimiento solo para la cuenta destino
+        var mov = new Movimiento
+        {
+            id_trx = nuevoId,
+            codigo_transaccion = CODIGO_DEPOSITO,
+            nro_cuenta_orig = null,                  // 🔴 Para depósito, origen = null
+            nro_cuenta_dest = dto.NroCuentaDestino,  // ✅ Solo destino
+            monto = dto.Monto,
+            fecha = DateTime.UtcNow
+        };
+
+        // 8) Acreditar directamente el monto en la cuenta destino
+        cuentaDestino.saldo += dto.Monto;
+        //     (No hace falta restar nada en origen, porque es un depósito externo)
+
+        // 9) Guardar el movimiento
+        await _movimientoRepository.CrearAsync(mov);
+        await _movimientoRepository.SaveAsync();
+
+        return Ok(new { id = mov.id_trx, mensaje = "Depósito registrado correctamente." });
     }
 
-    // 7️⃣ Ajustar saldos según tipo
-    if (codigoTransaccion == 1) // Crédito por transferencia
-    {
-        cuentaDestino.saldo += movimientoDto.Monto;
-    }
-    else if (codigoTransaccion == 2) // Transferencia
-    {
-        cuentaOrigen.saldo -= movimientoDto.Monto;
-        cuentaDestino.saldo += movimientoDto.Monto;
-    }
-    else if (codigoTransaccion == 3) // Depósito cuenta propia
-    {
-        cuentaDestino.saldo += movimientoDto.Monto;
-    }
-    else if (codigoTransaccion == 4) // Compra en comercio
-    {
-        cuentaOrigen.saldo -= movimientoDto.Monto;
-    }
-    else if (codigoTransaccion == 5) // Recarga de saldo virtual
-    {
-        cuentaOrigen.saldo -= movimientoDto.Monto;
-    }
+}
 
-    // 8️⃣ Crear y guardar nuevo registro en Transaccion
-    var nuevaTransaccion = new Transaccion
-    {
-        codigo_transaccion = codigoTransaccion,     // **CAMBIO: asignar el código aquí (ya no puede ser NULL)**
-        descripcion = movimientoDto.Descripcion     // **CAMBIO: grabar la descripción**
-    };
-    await _transaccionRepository.CrearAsync(nuevaTransaccion);
-    await _transaccionRepository.SaveAsync();
-
-    // 9️⃣ Generar el próximo id_trx
-    int nextId = await _movimientoRepository.GetMaxIdAsync() + 1;
-
-    // 🔟 Crear y guardar nuevo Movimiento
-    var mov = new Movimiento
-    {
-        id_trx = nextId,
-        fecha = DateTime.UtcNow,
-        monto = movimientoDto.Monto,
-        nro_cuenta_orig = movimientoDto.NroCuentaOrigen,
-        nro_cuenta_dest = movimientoDto.NroCuentaDestino,
-        codigo_transaccion = codigoTransaccion        // **CAMBIO: colocar código en Movimiento**
-    };
-
-    await _movimientoRepository.CrearAsync(mov);
-    await _movimientoRepository.SaveAsync();
-
-    return Ok(new { mensaje = "Movimiento procesado correctamente." });*/
 
 

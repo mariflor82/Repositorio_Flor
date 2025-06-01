@@ -991,10 +991,6 @@
           "monto": {
             "type": "number",
             "format": "double"
-          },
-          "descripcion": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false

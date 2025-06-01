@@ -18,7 +18,7 @@
         /// <summary>
         /// Descripción libre que identifica este depósito.
         /// </summary>
-        public string Descripcion { get; set; } = string.Empty;
+        //public string Descripcion { get; set; } = string.Empty;
     }
 }
 
