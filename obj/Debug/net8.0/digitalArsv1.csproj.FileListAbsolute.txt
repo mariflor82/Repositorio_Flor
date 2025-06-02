@@ -716,6 +716,12 @@ C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\s
 C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\digitalA.0DBA0FDF.Up2Date
+C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\digitalArsv1.dll
+C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\refint\digitalArsv1.dll
+C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\digitalArsv1.pdb
+C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\digitalArsv1.genruntimeconfig.cache
+C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\ref\digitalArsv1.dll
 C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\staticwebassets\msbuild.digitalArsv1.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\staticwebassets\msbuild.digitalArsv1.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\staticwebassets\msbuild.build.digitalArsv1.props
@@ -723,9 +729,3 @@ C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\s
 C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.digitalArsv1.props
 C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
-C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\digitalA.0DBA0FDF.Up2Date
-C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\digitalArsv1.dll
-C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\refint\digitalArsv1.dll
-C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\digitalArsv1.pdb
-C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\digitalArsv1.genruntimeconfig.cache
-C:\Users\ASUS\Desktop\Curso_SQL_NET_REACT\TP\etapa2\billetera\obj\Debug\net8.0\ref\digitalArsv1.dll

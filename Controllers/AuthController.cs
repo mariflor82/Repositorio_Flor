@@ -1,29 +1,32 @@
-﻿using digitalArsv1.Models;
+﻿using digitalArsv1.DTOs;
+using digitalArsv1.Helpers;
+using digitalArsv1.Models;
 using digitalArsv1.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Authorization;
-using digitalArsv1.DTOs;
-using digitalArsv1.Helpers;
 
 namespace digitalArsv1.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Tags("Metodo con autenticacion.(SOLO ADMINISTRADOR)")]
     public class AuthController : ControllerBase
     {
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly IPermisoRepository _permisoRepository;
         private readonly IConfiguration _configuration;
 
-        public AuthController(IUsuarioRepository usuarioRepository, IPermisoRepository permisoRepository, IConfiguration configuration)
+        public AuthController(
+            IUsuarioRepository usuarioRepository,
+            IPermisoRepository permisoRepository,
+            IConfiguration configuration)
         {
             _usuarioRepository = usuarioRepository;
             _permisoRepository = permisoRepository;
@@ -55,15 +58,15 @@ namespace digitalArsv1.Controllers
             });
         }
 
-
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
-            // Validar duplicado
+            // 1) Validar que no exista duplicado
             var existente = await _usuarioRepository.ObtenerPorEmailAsync(request.Mail);
             if (existente != null)
                 return BadRequest(new { mensaje = "Ya existe un usuario con ese mail." });
 
+            // 2) Mapear DTO -> Entidad y guardar
             var usuario = new Usuario
             {
                 nombre = request.Nombre,
@@ -77,11 +80,10 @@ namespace digitalArsv1.Controllers
             };
 
             await _usuarioRepository.CrearAsync(usuario);
-            
+            await _usuarioRepository.SaveAsync(); // ← ¡Importante hacer el SaveAsync!
 
             return Ok(new { mensaje = "Usuario registrado correctamente." });
         }
-
 
         // Método privado para generar JWT
         private string GenerarToken(int nroUsuario, string tipoCliente)
@@ -92,7 +94,8 @@ namespace digitalArsv1.Controllers
                 new Claim(ClaimTypes.Role, tipoCliente)
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var key = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
@@ -104,8 +107,8 @@ namespace digitalArsv1.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
         [Authorize(Roles = "ADMINISTRADOR")]
-        //Metodo PUT, para modificar estado de Usuario (0-1). Solo con autenticacion(token)
         [HttpPut("desactivar-usuarios-sin-cuenta")]
         public async Task<IActionResult> DesactivarUsuariosSinCuenta()
         {
@@ -130,3 +133,4 @@ namespace digitalArsv1.Controllers
         }
     }
 }
+

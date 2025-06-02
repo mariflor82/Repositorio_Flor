@@ -37,36 +37,50 @@ namespace digitalArsv1
             {
                 entity.ToTable("Cuenta");
                 entity.HasKey(c => c.nro_cuenta);
-                entity.Property(c => c.nro_cuenta)
-                      .HasColumnName("nro_cuenta")
-                      .ValueGeneratedNever(); // ✅ Evita que SQL genere este campo automáticamente
-                entity.Property(c => c.producto).HasColumnName("producto");
-                entity.Property(c => c.CBU).HasColumnName("CBU");
-                entity.Property(c => c.estado).HasColumnName("estado");
-                entity.Property(c => c.nro_cliente).HasColumnName("nro_cliente");
-                entity.Property(c => c.rol_cta).HasColumnName("rol_cta");
+                entity.Property(c => c.nro_cuenta) .HasColumnName("nro_cuenta")
+                      .ValueGeneratedNever();
+
+                entity.Property(c => c.producto)  .HasColumnName("producto");
+
+                entity.Property(c => c.CBU)  .HasColumnName("CBU");
+
+                entity.Property(c => c.estado)  .HasColumnName("estado");
+
+                entity.Property(c => c.nro_cliente) .HasColumnName("nro_cliente");
+
+                // Asegúrate de mapear `rol_cta` como nvarchar(max) (por convención no hace falta HasColumnType)
+                entity.Property(c => c.rol_cta) .HasColumnName("rol_cta");
+
+                // Especifica tipo decimal(18,2) para evitar truncamientos
+                entity.Property(c => c.saldo) .HasColumnName("saldo")
+                      .HasColumnType("decimal(18,2)");
+
+                // `fecha_alta` ya es DateTime en la clase; aquí definimos el default y tipo
+                entity.Property(c => c.fecha_alta) .HasColumnName("fecha_alta")
+                      .HasColumnType("datetime2")
+                      .HasDefaultValueSql("GETDATE()");
+
+                entity.Property(c => c.alias) .HasColumnName("alias")
+                      .HasMaxLength(50)
+                      .IsRequired(false);
 
                 entity.HasOne(c => c.Usuario)
-                    .WithMany(u => u.Cuentas)
-                    .HasForeignKey(c => c.nro_cliente)
-                    .OnDelete(DeleteBehavior.Restrict);
+                      .WithMany(u => u.Cuentas)
+                      .HasForeignKey(c => c.nro_cliente)
+                      .OnDelete(DeleteBehavior.Restrict);
             });
 
-            //  TRANSACCION 
-            modelBuilder.Entity<Transaccion>(entity =>
-            {
-                entity.ToTable("Transaccion");
-                entity.HasKey(t => t.codigo_transaccion);
-                entity.Property(t => t.codigo_transaccion).HasColumnName("codigo_transaccion");
-                entity.Property(t => t.descripcion).HasColumnName("descripcion");
-            });
-
-            // MOVIMIENTO 
+            //  MOVIMIENTO 
             modelBuilder.Entity<Movimiento>(entity =>
             {
                 entity.ToTable("Movimiento");
                 entity.HasKey(m => m.id_trx);
-                entity.Property(m => m.id_trx).HasColumnName("id_trx");
+
+                // Id_trx asignado manualmente
+                entity.Property(m => m.id_trx)
+                      .HasColumnName("id_trx")
+                      .ValueGeneratedNever();
+
                 entity.Property(m => m.fecha).HasColumnName("fecha");
                 entity.Property(m => m.monto)
                       .HasColumnName("monto")
@@ -90,19 +104,20 @@ namespace digitalArsv1
                       .HasForeignKey(m => m.codigo_transaccion)
                       .OnDelete(DeleteBehavior.Restrict);
             });
-            // PERMISO
-            modelBuilder.Entity<Permiso>(entity =>
-                {
-                    entity.ToTable("Permisos");
-                    entity.HasKey(p => new { p.nro_usuario, p.acceso }); // Clave compuesta
-                    entity.Property(p => p.nro_usuario).HasColumnName("nro_usuario");
-                    entity.Property(p => p.acceso).HasColumnName("acceso");
 
-                    entity.HasOne(p => p.Usuario)
-                          .WithMany(u => u.Permisos)
-                          .HasForeignKey(p => p.nro_usuario)
-                          .OnDelete(DeleteBehavior.Cascade);
-                });
+            // –––––– PERMISO ––––––
+            modelBuilder.Entity<Permiso>(entity =>
+            {
+                entity.ToTable("Permisos");
+                entity.HasKey(p => new { p.nro_usuario, p.acceso });
+                entity.Property(p => p.nro_usuario).HasColumnName("nro_usuario");
+                entity.Property(p => p.acceso).HasColumnName("acceso");
+
+                entity.HasOne(p => p.Usuario)
+                      .WithMany(u => u.Permisos)
+                      .HasForeignKey(p => p.nro_usuario)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
 
         } 
 

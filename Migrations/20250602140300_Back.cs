@@ -6,22 +6,21 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace digitalArsv1.Migrations
 {
     /// <inheritdoc />
-    public partial class agregamoscontraseña : Migration
+    public partial class Back : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Transaccion",
+                name: "Transacciones",
                 columns: table => new
                 {
-                    codigo_transaccion = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    codigo_transaccion = table.Column<int>(type: "int", nullable: false),
                     descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Transaccion", x => x.codigo_transaccion);
+                    table.PrimaryKey("PK_Transacciones", x => x.codigo_transaccion);
                 });
 
             migrationBuilder.CreateTable(
@@ -48,13 +47,15 @@ namespace digitalArsv1.Migrations
                 name: "Cuenta",
                 columns: table => new
                 {
-                    nro_cuenta = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    nro_cuenta = table.Column<int>(type: "int", nullable: false),
                     producto = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CBU = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     estado = table.Column<bool>(type: "bit", nullable: false),
                     nro_cliente = table.Column<int>(type: "int", nullable: false),
-                    rol_cta = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    rol_cta = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    saldo = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    fecha_alta = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    alias = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -89,13 +90,12 @@ namespace digitalArsv1.Migrations
                 name: "Movimiento",
                 columns: table => new
                 {
-                    id_trx = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    id_trx = table.Column<int>(type: "int", nullable: false),
                     fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
                     monto = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    nro_cuenta_orig = table.Column<int>(type: "int", nullable: false),
+                    nro_cuenta_orig = table.Column<int>(type: "int", nullable: true),
                     nro_cuenta_dest = table.Column<int>(type: "int", nullable: true),
-                    codigo_transaccion = table.Column<int>(type: "int", nullable: true)
+                    codigo_transaccion = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -113,9 +113,9 @@ namespace digitalArsv1.Migrations
                         principalColumn: "nro_cuenta",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Movimiento_Transaccion_codigo_transaccion",
+                        name: "FK_Movimiento_Transacciones_codigo_transaccion",
                         column: x => x.codigo_transaccion,
-                        principalTable: "Transaccion",
+                        principalTable: "Transacciones",
                         principalColumn: "codigo_transaccion",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -154,7 +154,7 @@ namespace digitalArsv1.Migrations
                 name: "Cuenta");
 
             migrationBuilder.DropTable(
-                name: "Transaccion");
+                name: "Transacciones");
 
             migrationBuilder.DropTable(
                 name: "Usuario");

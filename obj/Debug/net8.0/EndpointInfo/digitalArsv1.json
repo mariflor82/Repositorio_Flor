@@ -1,11 +1,85 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "BILLETERA VIRTUAL- DigitalArs",
-    "description": "Gestión de usuarios, cuentas, movimientos, permisos ",
+    "title": "BILLETERA VIRTUAL - DigitalArs",
+    "description": "Gestión de usuarios, cuentas, movimientos, permisos",
     "version": "v1"
   },
   "paths": {
+    "/api/Auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/desactivar-usuarios-sin-cuenta": {
+      "put": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Cuentas": {
       "get": {
         "tags": [
@@ -71,7 +145,7 @@
         }
       }
     },
-    "/api/Cuentas/{nroCuenta}/saldo": {
+    "/api/Cuentas/saldo/{nroCuenta}": {
       "get": {
         "tags": [
           "Cuentas"
@@ -192,8 +266,8 @@
         }
       }
     },
-    "/api/Cuentas/movimiento": {
-      "post": {
+    "/api/Cuentas/alias": {
+      "put": {
         "tags": [
           "Cuentas"
         ],
@@ -201,95 +275,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MovimientoDTO"
+                "$ref": "#/components/schemas/UpdateAliasDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/MovimientoDTO"
+                "$ref": "#/components/schemas/UpdateAliasDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/MovimientoDTO"
+                "$ref": "#/components/schemas/UpdateAliasDTO"
               }
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Auth/login": {
-      "post": {
-        "tags": [
-          "Metodo con autenticacion.(SOLO ADMINISTRADOR)"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginDTO"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginDTO"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginDTO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Auth/register": {
-      "post": {
-        "tags": [
-          "Metodo con autenticacion.(SOLO ADMINISTRADOR)"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegisterRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegisterRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegisterRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Auth/desactivar-usuarios-sin-cuenta": {
-      "put": {
-        "tags": [
-          "Metodo con autenticacion.(SOLO ADMINISTRADOR)"
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -373,48 +373,10 @@
             }
           }
         }
-      },
-      "put": {
-        "tags": [
-          "Movimientos"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Movimiento"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Movimiento"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Movimiento"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "delete": {
+      }
+    },
+    "/api/Movimientos/{id}/detalle": {
+      "get": {
         "tags": [
           "Movimientos"
         ],
@@ -431,12 +393,29 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovimientoDetalleDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovimientoDetalleDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MovimientoDetalleDTO"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/api/Movimientos/movimiento": {
+    "/api/Movimientos/resumen": {
       "post": {
         "tags": [
           "Movimientos"
@@ -445,24 +424,107 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MovimientoDTO"
+                "$ref": "#/components/schemas/RangoFechasMovDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/MovimientoDTO"
+                "$ref": "#/components/schemas/RangoFechasMovDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/MovimientoDTO"
+                "$ref": "#/components/schemas/RangoFechasMovDTO"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MovimientoDetalleDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MovimientoDetalleDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MovimientoDetalleDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Movimientos/ultimos": {
+      "post": {
+        "tags": [
+          "Movimientos"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RangoFechasMovDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RangoFechasMovDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RangoFechasMovDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UltimosMovimientoDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UltimosMovimientoDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UltimosMovimientoDTO"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -770,6 +832,35 @@
             }
           }
         }
+      },
+      "put": {
+        "tags": [
+          "Usuarios"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUsuarioDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUsuarioDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUsuarioDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/api/Usuarios/{id}": {
@@ -896,7 +987,11 @@
           },
           "fecha_alta": {
             "type": "string",
-            "format": "date"
+            "format": "date-time"
+          },
+          "alias": {
+            "type": "string",
+            "nullable": true
           },
           "usuario": {
             "$ref": "#/components/schemas/Usuario"
@@ -951,6 +1046,10 @@
           "fechaCreacion": {
             "type": "string",
             "format": "date-time"
+          },
+          "alias": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -977,6 +1076,14 @@
           "saldo": {
             "type": "number",
             "format": "double"
+          },
+          "fechaCreacion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "alias": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -984,10 +1091,6 @@
       "DepositoDTO": {
         "type": "object",
         "properties": {
-          "nroCuentaDestino": {
-            "type": "integer",
-            "format": "int32"
-          },
           "monto": {
             "type": "number",
             "format": "double"
@@ -1050,24 +1153,33 @@
         },
         "additionalProperties": false
       },
-      "MovimientoDTO": {
+      "MovimientoDetalleDTO": {
         "type": "object",
         "properties": {
-          "nroCuentaOrigen": {
+          "idTrx": {
             "type": "integer",
             "format": "int32"
           },
-          "nroCuentaDestino": {
-            "type": "integer",
-            "format": "int32",
+          "descripcionTransaccion": {
+            "type": "string",
             "nullable": true
           },
           "monto": {
             "type": "number",
             "format": "double"
           },
-          "descripcion": {
+          "fecha": {
             "type": "string",
+            "format": "date-time"
+          },
+          "nroCuentaOrigen": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "nroCuentaDestino": {
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           }
         },
@@ -1086,6 +1198,20 @@
           },
           "usuario": {
             "$ref": "#/components/schemas/Usuario"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RangoFechasMovDTO": {
+        "type": "object",
+        "properties": {
+          "fechaDesde": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaHasta": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false
@@ -1159,6 +1285,64 @@
           "monto": {
             "type": "number",
             "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UltimosMovimientoDTO": {
+        "type": "object",
+        "properties": {
+          "fecha": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "descripcionTransaccion": {
+            "type": "string",
+            "nullable": true
+          },
+          "monto": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateAliasDTO": {
+        "type": "object",
+        "properties": {
+          "nroCuenta": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nuevoAlias": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateUsuarioDTO": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "apellido": {
+            "type": "string",
+            "nullable": true
+          },
+          "direccion": {
+            "type": "string",
+            "nullable": true
+          },
+          "mail": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefono": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1244,7 +1428,7 @@
     "securitySchemes": {
       "Bearer": {
         "type": "http",
-        "description": "Ingrese el token ",
+        "description": "Ingrese 'Bearer {token}'",
         "scheme": "Bearer",
         "bearerFormat": "JWT"
       }

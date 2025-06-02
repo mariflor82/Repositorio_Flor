@@ -14,7 +14,8 @@ namespace digitalArsv1.Models
         public int nro_cliente { get; set; }
         public string? rol_cta { get; set; }
         public decimal? saldo { get; set; }
-        public DateOnly fecha_alta { get; set; }
+        public DateTime fecha_alta { get; set; }
+        public string alias { get; set; } = string.Empty;
 
         // Relación con Usuario (nro_cliente)
         [ForeignKey("nro_cliente")]

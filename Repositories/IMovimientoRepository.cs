@@ -1,6 +1,7 @@
 ﻿using digitalArsv1.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using static MovimientoDetalleDTO;
 
 namespace digitalArsv1.Repositories
 {
@@ -9,13 +10,11 @@ namespace digitalArsv1.Repositories
         // Métodos específicos para Movimiento que no están en IRepository
         Task<IEnumerable<Movimiento>> GetAllWithRelationsAsync();
 
-        // ✅ NUEVO: Agregar un movimiento al contexto (no guarda aún)
+        // ✅  Agregar un movimiento al contexto (no guarda aún)
         Task CrearAsync(Movimiento movimiento);
 
-        // ✅ NUEVO: Guardar cambios pendientes en el contexto
+        // ✅ Guardar cambios pendientes en el contexto
         Task SaveAsync();
-
-        
 
         // Obtener una cuenta por su número
         Task<Cuenta> ObtenerCuentaPorNumeroAsync(int numeroCuenta);
@@ -26,5 +25,17 @@ namespace digitalArsv1.Repositories
         //    Agregar un nuevo movimiento
         Task AddAsync(Movimiento movimiento);
 
+        // para obtener detalle por ID
+        Task<MovimientoDetalleDTO?> GetMovimientoDetallePorIdAsync(int id);
+        Task<List<MovimientoDetalleDTO>> GetResumenMovimientosPorClienteAsync(
+            int nroCliente, DateTime fechaDesde, DateTime fechaHasta);
+        Task<List<UltimosMovimientoDTO>> GetUltimosMovimientosPorClienteAsync(
+           int nroCliente, DateTime fechaDesde, DateTime fechaHasta);
     }
 }
+ 
+
+
+
+
+    

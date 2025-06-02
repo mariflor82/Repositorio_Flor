@@ -12,8 +12,8 @@ using digitalArsv1;
 namespace digitalArsv1.Migrations
 {
     [DbContext(typeof(DigitalArsContext))]
-    [Migration("20250527150844_Inicial")]
-    partial class Inicial
+    [Migration("20250602140300_Back")]
+    partial class Back
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -79,20 +79,28 @@ namespace digitalArsv1.Migrations
             modelBuilder.Entity("digitalArsv1.Models.Cuenta", b =>
                 {
                     b.Property<int>("nro_cuenta")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("nro_cuenta");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("nro_cuenta"));
 
                     b.Property<string>("CBU")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("CBU");
 
+                    b.Property<string>("alias")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("alias");
+
                     b.Property<bool>("estado")
                         .HasColumnType("bit")
                         .HasColumnName("estado");
+
+                    b.Property<DateTime>("fecha_alta")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasColumnName("fecha_alta")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<int>("nro_cliente")
                         .HasColumnType("int")
@@ -107,6 +115,10 @@ namespace digitalArsv1.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("rol_cta");
 
+                    b.Property<decimal?>("saldo")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("saldo");
+
                     b.HasKey("nro_cuenta");
 
                     b.HasIndex("nro_cliente");
@@ -117,13 +129,10 @@ namespace digitalArsv1.Migrations
             modelBuilder.Entity("digitalArsv1.Models.Movimiento", b =>
                 {
                     b.Property<int>("id_trx")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("id_trx");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id_trx"));
-
-                    b.Property<int?>("codigo_transaccion")
+                    b.Property<int>("codigo_transaccion")
                         .HasColumnType("int")
                         .HasColumnName("codigo_transaccion");
 
@@ -139,7 +148,7 @@ namespace digitalArsv1.Migrations
                         .HasColumnType("int")
                         .HasColumnName("nro_cuenta_dest");
 
-                    b.Property<int>("nro_cuenta_orig")
+                    b.Property<int?>("nro_cuenta_orig")
                         .HasColumnType("int")
                         .HasColumnName("nro_cuenta_orig");
 
@@ -174,20 +183,15 @@ namespace digitalArsv1.Migrations
             modelBuilder.Entity("digitalArsv1.Models.Transaccion", b =>
                 {
                     b.Property<int>("codigo_transaccion")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("codigo_transaccion");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("codigo_transaccion"));
+                        .HasColumnType("int");
 
                     b.Property<string>("descripcion")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("descripcion");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("codigo_transaccion");
 
-                    b.ToTable("Transaccion", (string)null);
+                    b.ToTable("Transacciones");
                 });
 
             modelBuilder.Entity("digitalArsv1.Models.Cuenta", b =>
@@ -206,7 +210,8 @@ namespace digitalArsv1.Migrations
                     b.HasOne("digitalArsv1.Models.Transaccion", "Transaccion")
                         .WithMany("Movimientos")
                         .HasForeignKey("codigo_transaccion")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("digitalArsv1.Models.Cuenta", "CuentaDest")
                         .WithMany("MovimientosDestino")
@@ -216,8 +221,7 @@ namespace digitalArsv1.Migrations
                     b.HasOne("digitalArsv1.Models.Cuenta", "CuentaOrig")
                         .WithMany("MovimientosOrigen")
                         .HasForeignKey("nro_cuenta_orig")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("CuentaDest");
 

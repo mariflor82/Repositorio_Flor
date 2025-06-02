@@ -7,10 +7,7 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": [],
-    "Tags": [
-      "Metodo con autenticacion.(SOLO ADMINISTRADOR)"
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "digitalArsv1.Controllers.AuthController",
@@ -26,10 +23,7 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [],
-    "Tags": [
-      "Metodo con autenticacion.(SOLO ADMINISTRADOR)"
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "digitalArsv1.Controllers.AuthController",
@@ -45,10 +39,7 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [],
-    "Tags": [
-      "Metodo con autenticacion.(SOLO ADMINISTRADOR)"
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "digitalArsv1.Controllers.CuentasController",
@@ -118,41 +109,15 @@
   },
   {
     "ContainingType": "digitalArsv1.Controllers.CuentasController",
-    "Method": "ObtenerSaldo",
-    "RelativePath": "api/Cuentas/{nroCuenta}/saldo",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "nroCuenta",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Decimal",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "digitalArsv1.Controllers.CuentasController",
-    "Method": "ProcesarMovimiento",
-    "RelativePath": "api/Cuentas/movimiento",
-    "HttpMethod": "POST",
+    "Method": "ActualizarAlias",
+    "RelativePath": "api/Cuentas/alias",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "digitalArsv1.DTOs.MovimientoDTO",
+        "Type": "digitalArsv1.DTOs.CuentaConsultaDTO\u002BUpdateAliasDTO",
         "IsRequired": true
       }
     ],
@@ -168,7 +133,33 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[digitalArsv1.DTOs.CuentaResumenDTO, digitalArsv1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[digitalArsv1.DTOs.CuentaConsultaDTO\u002BCuentaResumenDTO, digitalArsv1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "digitalArsv1.Controllers.CuentasController",
+    "Method": "ObtenerSaldo",
+    "RelativePath": "api/Cuentas/saldo/{nroCuenta}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nroCuenta",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Decimal",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -226,30 +217,9 @@
   },
   {
     "ContainingType": "MovimientosController",
-    "Method": "PutMovimiento",
-    "RelativePath": "api/Movimientos/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "movimiento",
-        "Type": "digitalArsv1.Models.Movimiento",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MovimientosController",
-    "Method": "DeleteMovimiento",
-    "RelativePath": "api/Movimientos/{id}",
-    "HttpMethod": "DELETE",
+    "Method": "GetDetalle",
+    "RelativePath": "api/Movimientos/{id}/detalle",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -259,7 +229,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "MovimientoDetalleDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "MovimientosController",
@@ -279,19 +259,29 @@
   },
   {
     "ContainingType": "MovimientosController",
-    "Method": "ProcesarMovimiento",
-    "RelativePath": "api/Movimientos/movimiento",
+    "Method": "GetResumenPorRango",
+    "RelativePath": "api/Movimientos/resumen",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "digitalArsv1.DTOs.MovimientoDTO",
+        "Name": "rango",
+        "Type": "digitalArsv1.DTOs.RangoFechasMovDTO",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MovimientoDetalleDTO, digitalArsv1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "MovimientosController",
@@ -308,6 +298,32 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MovimientosController",
+    "Method": "GetUltimosPorRango",
+    "RelativePath": "api/Movimientos/ultimos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rango",
+        "Type": "digitalArsv1.DTOs.RangoFechasMovDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MovimientoDetalleDTO\u002BUltimosMovimientoDTO, digitalArsv1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "digitalArsv1.Controllers.PermisoController",
@@ -460,6 +476,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "UsuariosController",
+    "Method": "UpdateUsuario",
+    "RelativePath": "api/Usuarios",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "digitalArsv1.DTOs.UpdateUsuarioDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "UsuariosController",

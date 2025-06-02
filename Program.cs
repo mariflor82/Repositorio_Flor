@@ -6,23 +6,23 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 using digitalArsv1;
 using digitalArsv1.Repositories;
-using Microsoft.Extensions.Configuration; //  esto si usas IConfiguration en controladores
-
-
-
-
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection; // necesario para AddDbContext, AddScoped, etc.
 
 var builder = WebApplication.CreateBuilder(args);
 
-// explorador de endpoints y Swagger
+// ─── Configuración de Swagger/OpenAPI ───────────────────────────────────────────────
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "BILLETERA VIRTUAL- DigitalArs",
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "BILLETERA VIRTUAL - DigitalArs",
         Version = "v1",
-        Description = "Gestión de usuarios, cuentas, movimientos, permisos " });
+        Description = "Gestión de usuarios, cuentas, movimientos, permisos"
+    });
 
-// Configuración de seguridad para JWT
+    // Configuración de seguridad para que Swagger pueda enviar el Bearer token
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -30,7 +30,7 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "Bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "Ingrese el token "
+        Description = "Ingrese 'Bearer {token}'"
     });
 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -44,58 +44,49 @@ builder.Services.AddSwaggerGen(c =>
                     Id = "Bearer"
                 }
             },
-            new string[] {}
+            new string[] { }
         }
     });
 });
 
-// Configura el DbContext
+// ─── Configuración de DbContext ──────────────────────────────────────────────────────
+// Asegúrate de que en appsettings.json exista ConnectionStrings: { "DigitalArsConnection": "..." }
 builder.Services.AddDbContext<DigitalArsContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DigitalArsConnection")));
 
-// Configura la serialización JSON
+// ─── Configuración de serialización JSON ─────────────────────────────────────────────
 builder.Services.AddControllers()
     .AddJsonOptions(x =>
         x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
-// Registro de repositorios
+// ─── Registro de repositorios en DI ─────────────────────────────────────────────────
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<ICuentaRepository, CuentaRepository>();
 builder.Services.AddScoped<IMovimientoRepository, MovimientoRepository>();
 builder.Services.AddScoped<ITransaccionRepository, TransaccionRepository>();
 builder.Services.AddScoped<IPermisoRepository, PermisoRepository>();
 
-//Permitir CORS desde Swagger (https://localhost:7153) **
+// ─── CORS (para permitir llamadas desde Swagger u otros orígenes) ──────────────────────
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSwagger", policy =>
     {
         policy
-            .AllowAnyOrigin()    // Permitir *cualquier* origen
+            .AllowAnyOrigin()   // Permitir cualquier origen para pruebas (ajusta según tu política real)
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
 });
 
-
-
-
-
-
-
-
-
-// **Configuración de Autenticación JWT:**
+// ─── Configuración de JWT Authentication ─────────────────────────────────────────────
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
-        // 1) Leer valores del appsettings.json
         var issuer = builder.Configuration["Jwt:Issuer"];
         var audience = builder.Configuration["Jwt:Audience"];
-        var secret = builder.Configuration["Jwt:Key"]; 
+        var secret = builder.Configuration["Jwt:Key"];
 
-        // 2) Validar que NO SEA null o vacío
         if (string.IsNullOrWhiteSpace(secret))
             throw new InvalidOperationException("La configuración 'Jwt:Key' no está definida.");
 
@@ -109,29 +100,33 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidIssuer = issuer,
             ValidAudience = audience,
             IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(secret))   // ? Aquí 'secret' nunca será null
+                Encoding.UTF8.GetBytes(secret))
         };
     });
+
 var app = builder.Build();
 
-// Middleware pipeline
+// ─── Middleware pipeline ──────────────────────────────────────────────────────────────
 
-if (app.Environment.IsDevelopment())
+// 1) CORS antes de todo lo demás
+app.UseCors("AllowSwagger");
+
+// 2) Swagger siempre disponible (no solo en Development)
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "BILLETERA VIRTUAL - DigitalArs v1");
+    c.RoutePrefix = "swagger"; // El UI estará en /swagger/index.html
+});
 
+// 3) HTTPS redirection
 app.UseHttpsRedirection();
 
-// **───────────────────────────────────────────────────────────────**
-// ** CAMBIO: Usar la política CORS “AllowSwagger” antes de UseAuthentication **
-app.UseCors("AllowSwagger");
-// **───────────────────────────────────────────────────────────────**
-
-app.UseAuthentication();  // <- Esto debe ir antes que UseAuthorization
+// 4) Autenticación y autorización
+app.UseAuthentication();
 app.UseAuthorization();
 
+// 5) Mapear controladores
 app.MapControllers();
 
 app.Run();

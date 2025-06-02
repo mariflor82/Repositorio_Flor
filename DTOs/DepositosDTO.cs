@@ -5,20 +5,10 @@
     /// </summary>
     public class DepositoDTO
     {
-        /// <summary>
-        /// La cuenta destino (pertenece al usuario autenticado).
-        /// </summary>
-        public int NroCuentaDestino { get; set; }
+     /// El monto a depositar (decimal(12,2)), debe ser > 0.
+      public decimal Monto { get; set; }
 
-        /// <summary>
-        /// El monto a depositar (decimal(12,2)), debe ser > 0.
-        /// </summary>
-        public decimal Monto { get; set; }
-
-        /// <summary>
-        /// Descripción libre que identifica este depósito.
-        /// </summary>
-        //public string Descripcion { get; set; } = string.Empty;
+       
     }
 }
 

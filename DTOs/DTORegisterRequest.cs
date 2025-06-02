@@ -30,5 +30,23 @@
         // ✅ NUEVO: incluir lista de cuentas del usuario
         
     }
-   
+    // DTO PARA ACTUALIZAR USUARIO**
+    // ============================
+    public class UpdateUsuarioDTO
+    {
+        /// Nombre completo (opcional para actualizar).
+        public string? Nombre { get; set; }
+             
+        /// Apellido (opcional para actualizar).
+        public string? Apellido { get; set; }
+               
+        /// Dirección (opcional para actualizar).
+        public string? Direccion { get; set; }
+                
+        /// Mail (opcional para actualizar).
+       public string? Mail { get; set; }
+               
+        /// Teléfono (opcional para actualizar).
+        public string? Telefono { get; set; }
+    }
 }
